@@ -5,7 +5,7 @@ REPO="sst/opencode"
 CURRENT_VER="none"
 if [ -f "$TARGET" ]; then
   VER_OUT=$("$TARGET" --version 2>&1 || true)
-  DETECTED=$(echo "$VER_OUT" | grep -oP 'v?[0-9]+\.[0-9]+\.[0-9]+' | head -n1)
+  DETECTED=$(echo "$VER_OUT" | rg -oP 'v?[0-9]+\.[0-9]+\.[0-9]+' | head -n1)
   [ -n "$DETECTED" ] && CURRENT_VER="$DETECTED"
 fi
 

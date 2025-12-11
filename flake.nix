@@ -75,7 +75,7 @@
               curl
               jq
               file
-              gnugrep
+              ripgrep
             ]
             ++ (
               if isLinux then
