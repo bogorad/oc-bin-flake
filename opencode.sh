@@ -1,5 +1,5 @@
 TARGET="/tmp/opencode"
-REPO="sst/opencode"
+REPO="anomalyco/opencode"
 
 # --- 1. VERSION CHECK ---
 CURRENT_VER="none"
