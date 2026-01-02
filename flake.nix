@@ -1,5 +1,5 @@
 {
-  description = "Self-updating SST OpenCode wrapper (Universal)";
+  description = "Self-updating SST/AnomalyCo OpenCode wrapper (Universal)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
