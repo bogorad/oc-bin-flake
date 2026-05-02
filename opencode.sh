@@ -1,5 +1,15 @@
-TARGET="/tmp/opencode"
+TARGET_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oc-bin-flake"
+TARGET="$TARGET_DIR/opencode"
+LEGACY_TARGET="/tmp/opencode"
 REPO="anomalyco/opencode"
+
+# Older wrapper versions stored the binary at /tmp/opencode. Upstream OpenCode
+# now creates that path as a directory, so remove only the old regular file.
+if [ -f "$LEGACY_TARGET" ]; then
+  rm -f "$LEGACY_TARGET"
+fi
+
+mkdir -p "$TARGET_DIR"
 
 # --- 1. VERSION CHECK ---
 CURRENT_VER="none"

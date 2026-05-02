@@ -49,7 +49,7 @@ Add the flake to your NixOS configuration to install `opencode` as a global comm
 After rebuilding (`nixos-rebuild switch`), simply run:
 
 ```bash
-opencode start
+opencode
 ```
 
 ---
@@ -62,7 +62,7 @@ This flake acts as a **smart shim** that lives between you and the upstream bina
 
 On every execution, the wrapper:
 
-1.  Checks the installed version in `/tmp/opencode`.
+1.  Checks the installed version in `${XDG_CACHE_HOME:-$HOME/.cache}/oc-bin-flake/opencode`.
 2.  Queries the GitHub API for the latest release tag.
 3.  If the versions differ (or if the local binary is broken), it downloads the correct asset for your architecture:
     - **x86_64-linux**: `opencode-linux-x64-musl.tar.gz`
@@ -83,7 +83,7 @@ On Darwin, the wrapper detects it is not on Linux and skips `patchelf`. Instead,
 
 ## Troubleshooting
 
-- **"Update required: none -> v1.0.98"**: This is normal on the first run or if the binary was deleted from `/tmp`.
+- **"Update required: none -> v1.0.98"**: This is normal on the first run or if the binary was deleted from `${XDG_CACHE_HOME:-$HOME/.cache}/oc-bin-flake/opencode`.
 - **Download Hangs**: Ensure you have internet access. The script uses `curl` with a 5-second connection timeout.
 - **Architecture Errors**: The flake strictly maps your Nix system (e.g., `aarch64-linux`) to the specific upstream asset. If you are running through Rosetta or QEMU, ensure your Nix system string matches the binary you expect to run.
 
